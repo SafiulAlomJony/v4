@@ -84,11 +84,11 @@ app.get("/v4", (req, res) => {
 app.post("/v4", (req, res) => {
   res.setHeader("Content-Type", "application/json");
   let data = req.body;
-  let emails = data.emails || ["example@gmail.com"];
+  let email = data.email || "example@gmail.com";
   let ua = data.browser
     ? decodeURIComponent(data.browser)
     : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36";
-  mailCheck(res, emails, ua);
+  mailCheck(res, email, ua);
 });
 
 app.listen(PORT, () => {

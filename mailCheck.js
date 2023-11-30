@@ -6,7 +6,7 @@ function delay(time) {
     setTimeout(resolve, time);
   });
 }
-const mailCheck = async (res, emails, ua) => {
+const mailCheck = async (res, email, ua) => {
   const browser = await puppeteer.launch({
     args: [
       `--disable-setuid-sandbox`,
@@ -37,7 +37,7 @@ const mailCheck = async (res, emails, ua) => {
   let msg = "{}";
   msg = JSON.parse(msg);
 
-  for (const email of emails) {
+ // for (const email of emails) {
     console.log("Email:" + email);
     await page.waitForSelector('input[type="email"]');
     console.log("clear input value");
@@ -69,7 +69,7 @@ const mailCheck = async (res, emails, ua) => {
       await page.click('[aria-label*="@gmail.com"]');
     }
     console.log(page.url());
-  }
+  //}
 
   res.send(msg);
 
